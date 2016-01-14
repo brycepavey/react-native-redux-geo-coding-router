@@ -5,7 +5,7 @@ const {
 } = require('../actions/routerActions')
 
 const initialState = {
-  stateChange: [{state:"", action:""}]
+  routerState: ["geoLocationSearch", "locationDetail", "geoLocationSearch"]
 }
 
 function router(state = initialState, action) {
@@ -13,6 +13,7 @@ function router(state = initialState, action) {
     case ON_PUSH:
       return {
         ...state,
+        routerState: action.route
       };
       case ON_POP:
         return {
