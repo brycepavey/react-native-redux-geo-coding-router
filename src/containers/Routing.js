@@ -27,12 +27,14 @@ class Routing extends React.Component {
   }
 
   render() {
+    console.log("---ROUTER STATE---")
+    console.log(this.props.routerState)
       return (
           <Router
                   onPush={(route)=>{
-                    this.props.actions.onPush(route.parent._stack); return true}}
+                    this.props.actions.onPush(route.name, this.props.routerState); return true}}
                   onPop={()=>{
-                    this.props.actions.onPop(); return true}}>
+                    this.props.actions.onPop(this.props.routerState); return true}}>
               <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
               <Schema name="default" sceneConfig={Navigator.SceneConfigs.FloatFromRight}/>
 

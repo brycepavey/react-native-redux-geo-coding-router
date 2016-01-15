@@ -5,22 +5,27 @@ const {
 } = require('../actions/routerActions')
 
 const initialState = {
-  routerState: ["geoLocationSearch", "locationDetail", "geoLocationSearch"]
+  routerState: ['geoLocationSearch']
 }
 
 function router(state = initialState, action) {
   switch (action.type) {
     case ON_PUSH:
+      var newRouterState = action.routerState
+      newRouterState.push(action.route)
       return {
         ...state,
-        routerState: action.route
+        routerState: newRouterState
       };
-      case ON_POP:
-        return {
-          ...state,
-        };
-      default:
-        return state;
+    case ON_POP:
+    var newRouterState = action.routerState
+    newRouterState = newRouterState.slice(0, -1)
+      return {
+        ...state,
+        routerState: newRouterState
+      };
+    default:
+      return state;
     }
 }
 
