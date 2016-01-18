@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   dispatch
 });
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(Routing.bind(this))
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Routing)

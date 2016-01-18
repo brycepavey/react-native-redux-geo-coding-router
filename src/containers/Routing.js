@@ -38,7 +38,7 @@ class Routing extends React.Component {
               <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
               <Schema name="default" sceneConfig={Navigator.SceneConfigs.FloatFromRight}/>
 
-              <Route name="geoLocationSearch" component={connect(mapStateToProps, mapDispatchToProps)(GeoLocationSearch.bind(this))} title="Geo Location Search" hideNavBar={false} initial={true}/>
+              <Route name="geoLocationSearch" component={connect(mapStateToProps, mapDispatchToProps)(GeoLocationSearch)} title="Geo Location Search" hideNavBar={false} initial={true}/>
               <Route name="locationDetail" component={(LocationDetail)} title="Location Detail"/>
           </Router>
       );
