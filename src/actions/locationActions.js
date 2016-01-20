@@ -15,7 +15,7 @@ exports.setSearchString = function setSearchString(searchString) {
 
 exports.updateLocation = function updateLocation(address) {
   return dispatch => {
-    dispatch(requestLocation())
+    dispatch(exports.requestLocation())
     return fetch(`https://maps.googleapis.com/maps/api/geocode/json?&encoding=json&address=${address.trim().split(' ').join('+')}`)
       .then((response) => response.json())
       .then(json => dispatch(exports.receiveLocation(json)))
@@ -25,26 +25,12 @@ exports.updateLocation = function updateLocation(address) {
   }
 }
 
-function requestLocation() {
+exports.requestLocation = function requestLocation() {
   return {
     type: actions.REQUEST_LOCATION,
     isLoading: true
   }
 }
-
-// exports.receiveLocation = function receiveLocation(json) {
-//   var locations = []
-//   for(var i = 0; i < json.results.length; i++){
-//       locations.push([json.results[i].formatted_address, json.results[i].geometry.location.lat, json.results[i].geometry.location.lng])
-//   }
-//
-//   return {
-//     type: actions.RECEIVE_LOCATION,
-//     locations: locations,
-//     isLoading: false,
-//   }
-// }
-
 
 exports.receiveLocation = function receiveLocation(json) {
   var locations = []

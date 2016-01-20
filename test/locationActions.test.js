@@ -64,4 +64,26 @@ describe('locationActions tests', () => {
     }
     expect(actions.receiveLocation(json)).toEqual(expectedAction)
   })
+
+
+
+  it('sets loading status true whilst performing web request', () => {
+    const expectedAction = {
+      type: actions.REQUEST_LOCATION,
+      isLoading: true
+    }
+    expect(actions.requestLocation()).toEqual(expectedAction)
+  })
+
+
+
+  it('updates the search string when value changes', () => {
+    const searchString = '200 City Road'
+
+    const expectedAction = {
+      type: actions.SET_SEARCH_STRING,
+      searchString: searchString
+    }
+    expect(actions.setSearchString(searchString)).toEqual(expectedAction)
+  })
 })
