@@ -19,6 +19,8 @@ const {
 class GeoLocationSearch extends React.Component {
   constructor(props) {
     super(props)
+    this._executeQuery = this._executeQuery.bind(this)
+    this.onSearchTextChanged = this.onSearchTextChanged.bind(this)
   }
 
   renderRow(rowData) {
@@ -56,14 +58,14 @@ class GeoLocationSearch extends React.Component {
           <TextInput
             style={styles.searchInput}
             value={this.props.searchString}
-            onChange={this.onSearchTextChanged.bind(this)}
+            onChange={this.onSearchTextChanged}
             placeholder='Search via address'
           />
           <TouchableHighlight style={styles.button}
             underlayColor='#99d9f4'>
             <Text
               style={styles.buttonText}
-              onPress={this._executeQuery.bind(this)}>
+              onPress={this._executeQuery}>
               Go
             </Text>
           </TouchableHighlight>
