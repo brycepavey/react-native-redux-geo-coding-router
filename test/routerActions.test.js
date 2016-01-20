@@ -1,8 +1,8 @@
 const expect = require('expect');
 const actions = require('../src/actions/routerActions')
 
-describe('actions', () => {
-  it('should create an action to push a new scene', () => {
+describe('routerActions tests', () => {
+  it('creates an action to push a new scene', () => {
     const route = 'locationDetail'
     const routerState = ['geoLocationSearch']
 
@@ -13,10 +13,11 @@ describe('actions', () => {
     }
     expect(actions.onPush(route, routerState)).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
-  it('should create an action to pop the current scene', () => {
+
+
+
+  it('creates an action to pop the current scene', () => {
     const route = 'locationDetail'
     const routerState = ['geoLocationSearch', 'locationDetail']
 

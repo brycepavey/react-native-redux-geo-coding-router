@@ -14,14 +14,14 @@ exports.setSearchString = function setSearchString(searchString) {
 }
 
 exports.updateLocation = function updateLocation(address) {
-  var query = `https://maps.googleapis.com/maps/api/geocode/json?&encoding=json&address=${address.trim().split(' ').join('+')}`
-  console.log(query)
-
   return dispatch => {
     dispatch(requestLocation())
-    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?&encoding=json&address=${address}`)
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?&encoding=json&address=${address.trim().split(' ').join('+')}`)
       .then((response) => response.json())
-      .then(json => dispatch(receiveLocation(json)))
+      .then(json => dispatch(exports.receiveLocation(json)))
+      .catch((error) => {
+          console.warn(error);
+      })
   }
 }
 
@@ -32,7 +32,21 @@ function requestLocation() {
   }
 }
 
-function receiveLocation(json) {
+// exports.receiveLocation = function receiveLocation(json) {
+//   var locations = []
+//   for(var i = 0; i < json.results.length; i++){
+//       locations.push([json.results[i].formatted_address, json.results[i].geometry.location.lat, json.results[i].geometry.location.lng])
+//   }
+//
+//   return {
+//     type: actions.RECEIVE_LOCATION,
+//     locations: locations,
+//     isLoading: false,
+//   }
+// }
+
+
+exports.receiveLocation = function receiveLocation(json) {
   var locations = []
   for(var i = 0; i < json.results.length; i++){
       locations.push([json.results[i].formatted_address, json.results[i].geometry.location.lat, json.results[i].geometry.location.lng])
