@@ -5,6 +5,8 @@ require("babel-register")({
  ignore: false
 });
 
+const React = require('react-native')
+const { ListView } = React
 const expect = require('expect')
 const reducer = require('../src/reducers/addressReducer')
 
