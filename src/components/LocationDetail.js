@@ -1,5 +1,4 @@
 const React = require('react-native')
-var Actions = require('react-native-router-flux').Actions;
 
 const {
   Component,
@@ -8,7 +7,7 @@ const {
   View,
 } = React
 
-class LocationDetail extends Component {
+export default class LocationDetail extends Component {
   constructor(props) {
     super(props)
   }
@@ -26,9 +25,6 @@ class LocationDetail extends Component {
     )
   }
 }
-
-module.exports = LocationDetail
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

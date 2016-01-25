@@ -1,7 +1,6 @@
 'use strict'
 const Location = require('./Location')
 const React = require('react-native');
-var Actions = require('react-native-router-flux').Actions;
 
 
 const {
